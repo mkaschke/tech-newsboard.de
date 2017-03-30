@@ -2,7 +2,6 @@
 // load check boxes
 loadData("menuTemplate","menu-container", "json/sources.json" );
 
-
 var i = 0; 
 // checkboxes
 $(document).on('click','[id^=someSwitchOptionPrimary]',function(){
@@ -10,28 +9,33 @@ $(document).on('click','[id^=someSwitchOptionPrimary]',function(){
   // get values from checkbox
   var url =  $(this).val();
   var checked =  $(this).is(':checked');
-  var name = $(this).parent().parent().text().trim();
-  // console.log(url);
-  // console.log(checked);  
-  //  console.log(name);
-  var containerName = "news-container-";
-  var idname = containerName + "name";
-  
-  console.log(i);
-  if(checked){
-    // create div
-  
+  //var name = $(this).parent().parent().text().trim();
+
+  // create container
+  var containerName = "news-container";
+  var tempContainer = "news-temp";
+  if(checked){  
     if (i == 0){
-      console.log("go");
-     $('.content').prepend($("<div id="+ idname + "></div>"));
+
+     $('.content').prepend($("<div id="+ containerName + "></div>"));
+      // load data  
+      loadData("newsTemplate", containerName , url );
+
+
+    }else{
+
+     $('.content').prepend($("<div id="+ tempContainer + "></div>"));
+     $('#' + tempContainer).hide();
+      // load data  
+      loadData("newsTemplate", tempContainer , url );
+      $("#" + tempContainer).appendTo("#" + containerName);
     }
   i++;
-    // load data  
-    loadData("newsTemplate", idname , url );
+
   
   }else{
-    // Remove div
-    $('#' + idname).remove();
+    // Remove div TODO
+    $('#' + containerName).remove();
   }
 
 });
