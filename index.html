@@ -7,8 +7,6 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-
-
     <div id="wrapper">
         <div class="overlay"></div>
     
@@ -42,8 +40,8 @@
    <li class="list-group-item">
         {{name}}
         <div class="material-switch pull-right">
-            <input id="someSwitchOptionPrimary-{{name}}"  type="checkbox" value={{URL}} />
-            <label for="someSwitchOptionPrimary-{{name}}" class="label-primary"></label>
+            <input id="someSwitchOptionPrimary-{{apiname}}" source={{apiname}} type="checkbox" value={{URL}} class="box" name={{name}} />
+            <label for="someSwitchOptionPrimary-{{apiname}}" class="label-primary"></label>
         </div>
     </li>
   {{/each}}
@@ -57,23 +55,28 @@
 
 <div class="grid" id="{{source}}">
 {{#each articles}}
+<a href={{url}} target="_news">
 <div class="grid-item">
-     <!-- <a href={{url}} target="_news"> <li>{{title}}</li> </a> -->
-    <img src={{urlToImage}} />
+      
+     <div class="news-image">   
+    <img src={{urlToImage}}  class="blur" />
+      <!-- <a href={{url}} target="_news"> -->
+      <div class="title-backgroud">
+        <h2>{{title}}</h2> 
+      </div>
+      </div>
     </div>
+    </a>
 {{/each}}
 </div>
 </script>
-
-
   <script src="js/handlebars.js"></script>
   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+   <script src="js/jquery.cookie.js"></script>  
+   <script src="js/masonry.pkgd.min.js"></script>  
+   <script src="js/imagesloaded.pkgd.min.js"></script>  
+   <script src="js/main.js"></script>
    <script src="js/menu.js"></script>  
-  <script src="js/masonry.pkgd.min.js"></script>  
-  <script src="js/imagesloaded.pkgd.min.js"></script>  
- 
-
-</body> 
+  </body> 
 </html>

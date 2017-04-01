@@ -1,4 +1,6 @@
 $(document).ready(function () {
+ 
+// menu
   var trigger = $('.hamburger'),
       overlay = $('.overlay'),
      isClosed = false;
@@ -37,5 +39,7 @@ $(document).ready(function () {
     $grid.masonry('layout');
   });
 
-
 });
+
+
+

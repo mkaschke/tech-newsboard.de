@@ -296,21 +296,6 @@ html { height: 100%;}
     z-index: 1;
 }
 
-
-.menu{
-	background-color: blue;
-	min-height: 150px;
-}
-
-.menu-container{
-
-}
-
-.checkbox { 
-	/*float: left;*/
-	/*color: white;*/
-}
-
 .material-switch > input[type="checkbox"] {
     display: none;   
 }
@@ -383,7 +368,7 @@ body { font-family: sans-serif; }
 .grid-sizer,
 .grid-item {
   width: 33.3333%;
-  
+
 }
 
 .grid-item {
@@ -395,3 +380,24 @@ body { font-family: sans-serif; }
   max-width: 100%;
 }
 
+.news-image { 
+   position: relative; 
+   width: 100%; /* for IE 6 */
+}
+
+h2 { 
+   position: absolute; 
+   top: 100px; 
+   left: 0; 
+   width: 100%; 
+   color: white;
+   font-size: 18px;
+}
+
+.blur{
+   filter: brightness(50%);
+}
+
+.blur:hover{
+   filter: brightness(100%);
+}
