@@ -7,77 +7,70 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <div id="wrapper">
-        <div class="overlay"></div>
+  <div id="wrapper">
+    <div class="overlay"></div>
     
-        <!-- Sidebar -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-            <div class="menu">
-                    <div id="menu-container"></div>
-            </div>
-        </nav>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-                <span class="hamb-top"></span>
-          <span class="hamb-middle"></span>
-        <span class="hamb-bottom"></span>
-            </button>
-            <div class="container-fluid">
-                <div class="row">
-                        <div class="content">   
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-
-<!-- template menu -->
-<script id="menuTemplate" type="text/x-handlebars-template">
-  <form role="form">
-    <ul class="list-group">
-  {{#each sources}}
-   <li class="list-group-item">
-        {{name}}
-        <div class="material-switch pull-right">
-            <input id="someSwitchOptionPrimary-{{apiname}}" source={{apiname}} type="checkbox" value={{URL}} class="box" name={{name}} />
-            <label for="someSwitchOptionPrimary-{{apiname}}" class="label-primary"></label>
-        </div>
-    </li>
-  {{/each}}
-  </ul>
-  </form>
-</script>
-
-
-<!-- template menu {{source}}-->
-<script id="newsTemplate" type="text/x-handlebars-template">
-
-<div class="grid" id="{{source}}">
-{{#each articles}}
-<a href={{url}} target="_news">
-<div class="grid-item">
-      
-     <div class="news-image">   
-    <img src={{urlToImage}}  class="blur" />
-      <!-- <a href={{url}} target="_news"> -->
-      <div class="title-backgroud">
-        <h2>{{title}}</h2> 
+    <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+      <div class="menu">
+        <div id="menu-container"></div>
       </div>
+    </nav>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+      <span class="hamb-top"></span>
+      <span class="hamb-middle"></span>
+      <span class="hamb-bottom"></span>
+    </button>
+    <div class="content">  
+          <div class="grid" id="news-container"></div> 
+        </div>
+
+    <!-- template menu -->
+    <script id="menuTemplate" type="text/x-handlebars-template">
+      <form role="form">
+        <ul class="list-group">
+          {{#each sources}}
+          <li class="list-group-item">
+            {{name}}
+            <div class="material-switch pull-right">
+              <input id="someSwitchOptionPrimary-{{apiname}}" source={{apiname}} type="checkbox" value={{URL}} class="box" name={{name}} />
+              <label for="someSwitchOptionPrimary-{{apiname}}" class="label-primary"></label>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+      </form>
+    </script>
+
+    <!-- template articles -->
+    <script id="newsTemplate" type="text/x-handlebars-template">
+      {{#each articles}}
+      <a href={{url}} target="_news" class={{../source}}>
+        <div class="grid-item">      
+         <div class="news-image">   
+          <img src="{{urlToImage}}"  class="blur" />
+          <div class="title-backgroud">
+            <h2>{{title}}</h2> 
+            <p>{{../source}}</p>
+          </div>
+        </div>
       </div>
-    </div>
     </a>
-{{/each}}
-</div>
-</script>
+    {{/each}}
+  </script>
+
+
+
   <script src="js/handlebars.js"></script>
   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <script src="js/jquery.cookie.js"></script>  
-   <script src="js/masonry.pkgd.min.js"></script>  
-   <script src="js/imagesloaded.pkgd.min.js"></script> 
-   <script src="js/waitForImages.js"></script> 
-   <script src="js/main.js"></script>
-   <script src="js/menu.js"></script>  
-  </body> 
+  <script src="js/jquery.cookie.js"></script>  
+  <script src="js/masonry.pkgd.min.js"></script>  
+  <script src="js/imagesloaded.pkgd.min.js"></script> 
+  <script src="js/main.js"></script>
+  <script src="js/menu.js"></script>  
+</body> 
 </html>

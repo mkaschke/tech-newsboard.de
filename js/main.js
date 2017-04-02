@@ -2,104 +2,107 @@
 // load check boxes
 loadData("menuTemplate","menu-container", "json/sources.json" );
 
- // create container
-  var containerName = "news-container";
-  $('.content').prepend($("<div id="+ containerName + "></div>"));
-
 // checkboxes
 $(document).on('click','[id^=someSwitchOptionPrimary]',function(){
- 
+
   // get values from checkbox
   var url =  $(this).val();
   var checked =  $(this).is(':checked');
   var name = $(this).attr('source');
-  // console.log(checked)
-  //TODO
-  // Cookies.remove(name);
- // Cookies.set(name, checked, { expires: 365 });
+
+  // cookie 
+  Cookies.set(name, checked, { expires: 365 });
   
+  // check of checkbox is checked
   if(checked){  
-
+      $(this).prop('checked', true);
       // load data  
-      loadData("newsTemplate", containerName , url );
+      loadData("newsTemplate",  "news-container" , url );
 
-  }else{
-      // Remove div TODO
-      $('#' + name).remove();
-  }
+    }else{
+      // Remove div 
+        $('.' + name).each(function (){
+          $(this).remove();
+        });
+    }
+  });
 
-});
 
-  function loadData(Template,Container, URL){
-    var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET', URL, true);
-    ourRequest.onload = function() {
-      if (ourRequest.status >= 200 && ourRequest.status < 400) {
-        var data = JSON.parse(ourRequest.responseText);
-        createHTML(data, Template, Container );
-        // console.log(data); // debug 
-      } else {
-        console.log("We connected to the server, but it returned an error.");
-      }
-    };
-    ourRequest.onerror = function() {
-      console.log("Connection error");
-    };
-    ourRequest.send();
+// load data from url
+function loadData(Template,Container, URL){
+  var ourRequest = new XMLHttpRequest();
+  ourRequest.open('GET', URL, true);
+  ourRequest.onload = function() {
+    if (ourRequest.status >= 200 && ourRequest.status < 400) {
+      var data = JSON.parse(ourRequest.responseText);
+      createHTML(data, Template, Container );
+    } else {
+      console.log("We connected to the server, but it returned an error.");
+    }
   };
+  ourRequest.onerror = function() {
+    console.log("Connection error");
+  };
+  ourRequest.send();
+};
 
-  function createHTML(Data, Template, Container) {
-    var rawTemplate = document.getElementById(Template).innerHTML;
-    var compiledTemplate = Handlebars.compile(rawTemplate);
-    var ourGeneratedHTML = compiledTemplate(Data);
-    var outContainer = document.getElementById(Container);
-    $(outContainer).prepend(ourGeneratedHTML);  
-     
+// handlebars render
+function createHTML(Data, Template, Container) {
+  var rawTemplate = document.getElementById(Template).innerHTML;
+  var compiledTemplate = Handlebars.compile(rawTemplate);
+  var ourGeneratedHTML = compiledTemplate(Data);
+  var outContainer = document.getElementById(Container);
+  $(outContainer).prepend(ourGeneratedHTML);  
 
-   if (Template  === 'menuTemplate') {
-    checkOrNot();
+    // not menu template
+    if (Template  === 'menuTemplate') {
+      checkOrNot();
     } else{
-        imagesize();
+      imagesize();
     }
   }
 
+  // check cookie with menu check / unchecked 
   function checkOrNot(){
-      $('input[type=checkbox]').each(function () {
-         var sourcename = $(this).attr('source');
-         var cookInformtion = Cookies.get(sourcename);     
+    $('input[type=checkbox]').each(function () {
+     var name = $(this).attr('source');
+     var cookInformtion = Cookies.get(name);     
+   
+         if (cookInformtion == 'true'){
+          $( "#someSwitchOptionPrimary-"+ name).click();
+            console.log(name + " "+ cookInformtion);
+        } else{
 
-         // console.log (sourcename);
-         // console.log(cookInformtion);
+           $( "#someSwitchOptionPrimary-"+ name).prop('checked', false);
+            console.log(name + " "+ cookInformtion);
+        }
 
-         // TODO
-         if (cookInformtion){
-          $( "#someSwitchOptionPrimary-"+sourcename).click();
-         } else{
-          $( "#someSwitchOptionPrimary-"+sourcename).prop('checked', false);
-         }
-
-    });
+      });
   }
 
-
+    // image size and gray box on the images
   function imagesize(){
+    $('#news-container').imagesLoaded().always( function( instance ) {
+      $('.blur').each(function () {
+        var src = $(this).attr("src");
 
-    // All descendant images have loaded, now slide up.
-    $(this).slideUp();
+        if (src === ""){
+          $(this).attr("src", "/images/replace.jpg");
 
+        }
 
-     $('.blur').each(function () {
-        $(this).waitForImages(function() {
+        console.log(src);
+
       var height = $(this).height();
       var heightbackground = $(this).next(".title-backgroud").height();
       var calcheighttop = height - heightbackground;
       $(this).next(".title-backgroud").css('top', calcheighttop + "px");
-
-
-      console.log(height);
-      console.log(heightbackground);
-      });
     });
+   }); 
 
 
-  }
+    console.log('all images loaded');
+  };
+
+ 
+ 
