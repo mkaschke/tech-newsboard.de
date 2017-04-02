@@ -29,7 +29,7 @@ $(document).ready(function () {
   });  
 
   // init Masonry
-  var $grid = $('.grid').masonry({
+  var $grid = $('#grid').masonry({
     itemSelector: '.grid-item',
     percentPosition: true,
     columnWidth: '.grid-sizer'
@@ -38,6 +38,8 @@ $(document).ready(function () {
   $grid.imagesLoaded().progress( function() {
     $grid.masonry('layout');
   });
+
+
 
 });
 

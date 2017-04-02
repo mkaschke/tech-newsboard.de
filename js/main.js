@@ -13,10 +13,10 @@ $(document).on('click','[id^=someSwitchOptionPrimary]',function(){
   var url =  $(this).val();
   var checked =  $(this).is(':checked');
   var name = $(this).attr('source');
-
+  // console.log(checked)
   //TODO
-  Cookies.remove("name");
-  Cookies.set(name, checked, { expires: 365 });
+  // Cookies.remove(name);
+ // Cookies.set(name, checked, { expires: 365 });
   
   if(checked){  
 
@@ -54,28 +54,52 @@ $(document).on('click','[id^=someSwitchOptionPrimary]',function(){
     var ourGeneratedHTML = compiledTemplate(Data);
     var outContainer = document.getElementById(Container);
     $(outContainer).prepend(ourGeneratedHTML);  
+     
 
    if (Template  === 'menuTemplate') {
     checkOrNot();
+    } else{
+        imagesize();
     }
   }
 
   function checkOrNot(){
       $('input[type=checkbox]').each(function () {
          var sourcename = $(this).attr('source');
-         
-
-         console.log (sourcename);
-
-
          var cookInformtion = Cookies.get(sourcename);     
-         console.log(cookInformtion);
 
+         // console.log (sourcename);
+         // console.log(cookInformtion);
 
          // TODO
          if (cookInformtion){
           $( "#someSwitchOptionPrimary-"+sourcename).click();
+         } else{
+          $( "#someSwitchOptionPrimary-"+sourcename).prop('checked', false);
          }
 
     });
+  }
+
+
+  function imagesize(){
+
+    // All descendant images have loaded, now slide up.
+    $(this).slideUp();
+
+
+     $('.blur').each(function () {
+        $(this).waitForImages(function() {
+      var height = $(this).height();
+      var heightbackground = $(this).next(".title-backgroud").height();
+      var calcheighttop = height - heightbackground;
+      $(this).next(".title-backgroud").css('top', calcheighttop + "px");
+
+
+      console.log(height);
+      console.log(heightbackground);
+      });
+    });
+
+
   }
