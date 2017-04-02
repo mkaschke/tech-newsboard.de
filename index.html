@@ -25,8 +25,10 @@
       <span class="hamb-bottom"></span>
     </button>
     <div class="content">  
-          <div class="grid" id="news-container"></div> 
-        </div>
+      <div class="container">
+        <div class="grid" id="news-container"></div> 
+      </div>
+    </div>
 
     <!-- template menu -->
     <script id="menuTemplate" type="text/x-handlebars-template">
@@ -36,7 +38,7 @@
           <li class="list-group-item">
             {{name}}
             <div class="material-switch pull-right">
-              <input id="someSwitchOptionPrimary-{{apiname}}" source={{apiname}} type="checkbox" value={{URL}} class="box" name={{name}} />
+              <input id="someSwitchOptionPrimary-{{apiname}}" source={{apiname}} type="checkbox" value={{URL}} class="box" name={{name}} color={{color}} />
               <label for="someSwitchOptionPrimary-{{apiname}}" class="label-primary"></label>
             </div>
           </li>
@@ -48,17 +50,31 @@
     <!-- template articles -->
     <script id="newsTemplate" type="text/x-handlebars-template">
       {{#each articles}}
-      <a href={{url}} target="_news" class={{../source}}>
-        <div class="grid-item">      
-         <div class="news-image">   
+      <div class="row rowspace {{../source}}">
+       <div class="col-md-4">
+        <a href={{url}} target="_news">
           <img src="{{urlToImage}}"  class="blur" />
-          <div class="title-backgroud">
-            <h2>{{title}}</h2> 
-            <p>{{../source}}</p>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="source-{{../source}}">
+              {{../source}}
+            </div>
           </div>
         </div>
+        <a href={{url}} target="_news">        
+          <h2>{{title}}</h2> 
+        </a>
+        <p>{{description}}</p>
       </div>
-    </a>
+    </div>
+    <div class="row {{../source}}">
+      <div class="col-md-10">
+        <hr>
+      </div>
+    </div>
     {{/each}}
   </script>
 
@@ -72,5 +88,8 @@
   <script src="js/imagesloaded.pkgd.min.js"></script> 
   <script src="js/main.js"></script>
   <script src="js/menu.js"></script>  
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e140d0ef17fb95"></script>
+
 </body> 
 </html>

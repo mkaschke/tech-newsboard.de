@@ -1,35 +1,44 @@
 {
-  "sources": [{
-    "name": "Techcrunch",
-    "apiname" :"techcrunch" ,
-    "URL": "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
-  }, {
-    "name": "Recode",
-    "apiname" :"recode",
-    "URL": "https://newsapi.org/v1/articles?source=recode&sortBy=top&apiKey=92cd0824bfb44f679fd9da1961e95f29"
-  }, {
-    "name": "Hacker News",
-    "apiname" :"hacker-news" ,
-    "URL": "https://newsapi.org/v1/articles?source=hacker-news&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
-  }, { "name": "Mashable",
-       "apiname" :"mashable" ,
-    "URL": "https://newsapi.org/v1/articles?source=mashable&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
-  }, { "name": "T3n",
-       "apiname" :"t3n" ,
-    "URL": " https://newsapi.org/v1/articles?source=t3n&sortBy=top&apiKey=92cd0824bfb44f679fd9da1961e95f29"
-  }, { "name": "The Next Web",
-       "apiname" :"the-next-web" ,
-    "URL": "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
-  }, { "name": "Wired",
-       "apiname" :"wired-de" ,
-    "URL": "https://newsapi.org/v1/articles?source=wired-de&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
-  }, { "name": "Gruenderszene",
-       "apiname" :"gruenderszene" ,
-    "URL": " https://newsapi.org/v1/articles?source=gruenderszene&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
-  }, { "name": "TechRadar",
-       "apiname" :"techradar" ,
-    "URL": "https://newsapi.org/v1/articles?source=techradar&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
-  }
+"sources": [{
+  "name": "Techcrunch",
+  "apiname" :"techcrunch" ,
+  "color": "089E00",
+  "URL": "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
+}, {
+  "name": "Recode",
+  "apiname" :"recode",
+  "color": "ed2b23",
+  "URL": "https://newsapi.org/v1/articles?source=recode&sortBy=top&apiKey=92cd0824bfb44f679fd9da1961e95f29"
+}, {
+  "name": "Hacker News",
+  "apiname" :"hacker-news" ,
+  "color": "089E00",
+  "URL": "https://newsapi.org/v1/articles?source=hacker-news&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
+}, { "name": "Mashable",
+     "apiname" :"mashable" ,
+      "color": "089E00",
+  "URL": "https://newsapi.org/v1/articles?source=mashable&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
+}, { "name": "T3n",
+     "apiname" :"t3n" ,
+      "color": "089E00",
+  "URL": " https://newsapi.org/v1/articles?source=t3n&sortBy=top&apiKey=92cd0824bfb44f679fd9da1961e95f29"
+}, { "name": "The Next Web",
+     "apiname" :"the-next-web" ,
+     "color": "089E00",
+  "URL": "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
+}, { "name": "Wired",
+     "apiname" :"wired-de" ,
+     "color": "089E00",
+  "URL": "https://newsapi.org/v1/articles?source=wired-de&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
+}, { "name": "Gruenderszene",
+     "apiname" :"gruenderszene" ,
+     "color": "089E00",
+  "URL": " https://newsapi.org/v1/articles?source=gruenderszene&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
+}, { "name": "TechRadar",
+     "apiname" :"techradar" ,
+     "color": "089E00",
+  "URL": "https://newsapi.org/v1/articles?source=techradar&sortBy=latest&apiKey=92cd0824bfb44f679fd9da1961e95f29"
+}
 ]
 }
 

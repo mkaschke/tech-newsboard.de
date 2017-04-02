@@ -15,18 +15,17 @@ $(document).on('click','[id^=someSwitchOptionPrimary]',function(){
   
   // check of checkbox is checked
   if(checked){  
-      $(this).prop('checked', true);
+    $(this).prop('checked', true);
       // load data  
       loadData("newsTemplate",  "news-container" , url );
 
     }else{
       // Remove div 
-        $('.' + name).each(function (){
-          $(this).remove();
-        });
+      $('.' + name).each(function (){
+        $(this).remove();
+      });
     }
   });
-
 
 // load data from url
 function loadData(Template,Container, URL){
@@ -66,43 +65,46 @@ function createHTML(Data, Template, Container) {
   function checkOrNot(){
     $('input[type=checkbox]').each(function () {
      var name = $(this).attr('source');
+     var color = $(this).attr('color');
+
      var cookInformtion = Cookies.get(name);     
-   
-         if (cookInformtion == 'true'){
-          $( "#someSwitchOptionPrimary-"+ name).click();
-            console.log(name + " "+ cookInformtion);
-        } else{
+     
+     if (cookInformtion == 'true'){
+      $( "#someSwitchOptionPrimary-"+ name).click();
+            // console.log(name + " "+ cookInformtion);
+          } else{
 
            $( "#someSwitchOptionPrimary-"+ name).prop('checked', false);
-            console.log(name + " "+ cookInformtion);
-        }
+            // console.log(name + " "+ cookInformtion);
+          }
 
-      });
+          colorForSource(name, color);
+
+        });
   }
 
     // image size and gray box on the images
-  function imagesize(){
-    $('#news-container').imagesLoaded().always( function( instance ) {
+    function imagesize(){
+      $('#news-container').imagesLoaded().always( function( instance ) {
+        
+      // TODO
       $('.blur').each(function () {
         var src = $(this).attr("src");
 
         if (src === ""){
           $(this).attr("src", "/images/replace.jpg");
-
         }
-
-        console.log(src);
-
-      var height = $(this).height();
-      var heightbackground = $(this).next(".title-backgroud").height();
-      var calcheighttop = height - heightbackground;
-      $(this).next(".title-backgroud").css('top', calcheighttop + "px");
-    });
-   }); 
-
-
-    console.log('all images loaded');
+        // console.log(src);
+      });
+    }); 
+    // console.log('all images loaded');
   };
 
- 
- 
+  // TODO
+  function colorForSource(name, color){
+    console.log(name);
+    $('.source-recode:first').css("background-color", "red");
+  }
+
+  
+  
