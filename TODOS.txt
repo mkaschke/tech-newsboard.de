@@ -1,0 +1,21 @@
+
+Version 1
++ auto reload after 
++ Image replace
+
++ share 
++ AWS -  Server
++ google analytics
+
+
+
+Version 2
++ Mobile
+
+
+
+
+
+
+http://fontawesome.io
+https://gist.github.com/tvanantwerp/6708c0bf818637bf2a50

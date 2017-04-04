@@ -3,29 +3,29 @@
 loadData("menuTemplate","menu-container", "json/sources.json" );
 
 // checkboxes
-$(document).on('click','[id^=someSwitchOptionPrimary]',function(){
+$(document).on('click','[id^=someSwitchOptionPrimary-]',function(){
 
-  // get values from checkbox
-  var url =  $(this).val();
-  var checked =  $(this).is(':checked');
-  var name = $(this).attr('source');
+// get values from checkbox
+var url =  $(this).val();
+var checked =  $(this).is(':checked');
+var name = $(this).attr('source');
 
-  // cookie 
-  Cookies.set(name, checked, { expires: 365 });
-  
-  // check of checkbox is checked
-  if(checked){  
-    $(this).prop('checked', true);
-      // load data  
-      loadData("newsTemplate",  "news-container" , url );
+// cookie 
+Cookies.set(name, checked, { expires: 365 });
 
-    }else{
-      // Remove div 
-      $('.' + name).each(function (){
-        $(this).remove();
-      });
-    }
-  });
+// check of checkbox is checked
+if(checked){  
+  $(this).prop('checked', true);
+    // load data  
+    loadData("newsTemplate",  "news-container" , url );
+
+  }else{
+    // Remove div 
+    $('.' + name).each(function (){
+      $(this).remove();
+    });
+  }
+});
 
 // load data from url
 function loadData(Template,Container, URL){
@@ -53,58 +53,120 @@ function createHTML(Data, Template, Container) {
   var outContainer = document.getElementById(Container);
   $(outContainer).prepend(ourGeneratedHTML);  
 
-    // not menu template
-    if (Template  === 'menuTemplate') {
-      checkOrNot();
-    } else{
-      imagesize();
-    }
+  // if no menu template
+  if (Template  === 'menuTemplate') {
+    checkOrNot();
+  } else{
+    imagesize();
+    colorForSource();
+    sorting();
   }
+};
 
-  // check cookie with menu check / unchecked 
-  function checkOrNot(){
-    $('input[type=checkbox]').each(function () {
-     var name = $(this).attr('source');
-     var color = $(this).attr('color');
+Handlebars.registerHelper( "getData", function ( publishedAt ){
+  var date = publishedAt.split('T')[0];
+  return date;
+});
 
-     var cookInformtion = Cookies.get(name);     
-     
-     if (cookInformtion == 'true'){
+Handlebars.registerHelper( "getTime", function ( publishedAt ){
+  var time = publishedAt.split('T')[1].split("Z")[0];
+  return time;
+});
+
+
+
+// check cookie with menu check / unchecked 
+function checkOrNot(){
+  $('input[type=checkbox]').each(function () {
+    var name = $(this).attr('source');
+    var cookInformtion = Cookies.get(name);     
+
+    if (cookInformtion == 'true'){
       $( "#someSwitchOptionPrimary-"+ name).click();
-            // console.log(name + " "+ cookInformtion);
-          } else{
+          // console.log(name + " "+ cookInformtion);
+        } else{
 
-           $( "#someSwitchOptionPrimary-"+ name).prop('checked', false);
-            // console.log(name + " "+ cookInformtion);
-          }
-
-          colorForSource(name, color);
-
-        });
-  }
-
-    // image size and gray box on the images
-    function imagesize(){
-      $('#news-container').imagesLoaded().always( function( instance ) {
-        
-      // TODO
-      $('.blur').each(function () {
-        var src = $(this).attr("src");
-
-        if (src === ""){
-          $(this).attr("src", "/images/replace.jpg");
+         $( "#someSwitchOptionPrimary-"+ name).prop('checked', false);
+          // console.log(name + " "+ cookInformtion);
         }
-        // console.log(src);
+
       });
-    }); 
-    // console.log('all images loaded');
-  };
+};
 
-  // TODO
-  function colorForSource(name, color){
-    console.log(name);
-    $('.source-recode:first').css("background-color", "red");
-  }
+  // image replace
+  function imagesize(){
+    $('#news-container').imagesLoaded().always( function( instance ) {
 
-  
-  
+    // TODO replace Bilder 
+    $('.blur').each(function () {
+      var src = $(this).attr("src");
+
+      if (src === ""){
+        $(this).attr("src", "/images/replace.jpg");
+      }
+      // console.log(src);
+    });
+  }); 
+  // console.log('all images loaded');
+};
+
+// color for the source
+function colorForSource(){
+ $('input[type=checkbox]').each(function () {
+   var name = $(this).attr('source');
+   var color = $(this).attr('color');
+
+   $('.source-' + name).each(function(){
+    $(this).css("background-color", "#" + color);
+  });
+ });
+};
+
+window.setInterval(function(){
+  var checked =  $('#someSwitchOptionPrimary').is(':checked');
+// console.log("autostart " + checked);
+
+if(checked){
+  updateSources();
+};
+}, 300000);  
+
+function updateSources(){
+  console.log("update");
+  $('input[type=checkbox][menu=sources]').each(function () {
+    var checked =  $(this).is(':checked');
+
+    if(checked){
+      var url =  $(this).val();
+      loadData("newsTemplate",  "news-container" , url );
+    };
+  });
+};
+
+function sorting(){
+  var newsList = $('#news-container');
+
+  var listitems = newsList.children('sorter').get();
+
+  listitems.sort(function(a, b) {
+   return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+ });
+
+  $.each(listitems, function(index, item) {
+   mylist.append(item); 
+ });
+
+
+
+  $('#news-container').sort(function (a, b) {
+    return $(a).find('.sorter').data('date') - $(b).find('.sorter').data('date');
+  }).each(function (_, container) {
+    $(container).parent().append(container);
+  });
+};
+
+
+
+
+
+
