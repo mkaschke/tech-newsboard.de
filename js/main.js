@@ -59,21 +59,25 @@ function createHTML(Data, Template, Container) {
   } else{
     imagesize();
     colorForSource();
-    sorting();
+
+    setTimeout(sortDate, 5000)
+
   }
 };
 
+  
+
+// Helper Date
 Handlebars.registerHelper( "getData", function ( publishedAt ){
   var date = publishedAt.split('T')[0];
   return date;
 });
 
+// Helper Time
 Handlebars.registerHelper( "getTime", function ( publishedAt ){
   var time = publishedAt.split('T')[1].split("Z")[0];
   return time;
 });
-
-
 
 // check cookie with menu check / unchecked 
 function checkOrNot(){
@@ -83,11 +87,8 @@ function checkOrNot(){
 
     if (cookInformtion == 'true'){
       $( "#someSwitchOptionPrimary-"+ name).click();
-          // console.log(name + " "+ cookInformtion);
         } else{
-
          $( "#someSwitchOptionPrimary-"+ name).prop('checked', false);
-          // console.log(name + " "+ cookInformtion);
         }
 
       });
@@ -122,15 +123,16 @@ function colorForSource(){
  });
 };
 
+
+// Update the APIs trigger
 window.setInterval(function(){
   var checked =  $('#someSwitchOptionPrimary').is(':checked');
-// console.log("autostart " + checked);
-
-if(checked){
-  updateSources();
-};
+  if(checked){
+    updateSources();
+  };
 }, 300000);  
 
+// Update the APIs function
 function updateSources(){
   console.log("update");
   $('input[type=checkbox][menu=sources]').each(function () {
@@ -142,31 +144,4 @@ function updateSources(){
     };
   });
 };
-
-function sorting(){
-  var newsList = $('#news-container');
-
-  var listitems = newsList.children('sorter').get();
-
-  listitems.sort(function(a, b) {
-   return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
- });
-
-  $.each(listitems, function(index, item) {
-   mylist.append(item); 
- });
-
-
-
-  $('#news-container').sort(function (a, b) {
-    return $(a).find('.sorter').data('date') - $(b).find('.sorter').data('date');
-  }).each(function (_, container) {
-    $(container).parent().append(container);
-  });
-};
-
-
-
-
-
 

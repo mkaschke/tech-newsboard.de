@@ -13,9 +13,10 @@ Version 2
 + Mobile
 
 
-
-
-
-
 http://fontawesome.io
 https://gist.github.com/tvanantwerp/6708c0bf818637bf2a50
+
+Sorting
+http://stackoverflow.com/questions/10636779/jquery-date-sorting
+https://j11y.io/javascript/sorting-elements-with-jquery/
+https://github.com/datejs/Datejs
