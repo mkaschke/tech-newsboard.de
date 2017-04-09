@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+nosourceschoosen();
+
 // menu
 var trigger = $('.hamburger'),
 overlay = $('.overlay'),
@@ -27,6 +29,16 @@ function hamburger_cross() {
 $('[data-toggle="offcanvas"]').click(function () {
   $('#wrapper').toggleClass('toggled');
 });  
+  
+
+// IF news-container
+function nosourceschoosen(){
+if($('#news-container').html().length > 1){
+    $('#addsources').hide();
+} else{
+    $('#addsources').show();
+}
+};
 
 }); // close ready
 

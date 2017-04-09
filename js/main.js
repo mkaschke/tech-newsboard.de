@@ -24,6 +24,7 @@ if(checked){
     $('.' + name).each(function (){
       $(this).remove();
     });
+    nosourceschoosen();
   }
 });
 
@@ -60,7 +61,7 @@ function createHTML(Data, Template, Container) {
     imagesize();
     colorForSource();
     sorting();
-
+    nosourceschoosen();
   }
 };
 
@@ -140,7 +141,7 @@ function updateSources(){
       var url =  $(this).val();
       var name =  $(this).attr('source');
       $('.' + name).each(function (){
-          $(this).remove();
+        $(this).remove();
       });
       console.log(name);
       loadData("newsTemplate",  "news-container" , url );
@@ -156,3 +157,15 @@ function lastupdated(){
 
 }
 lastupdated();
+
+// IF news-container
+function nosourceschoosen(){
+
+if ($.trim($("#news-container").html())=='') {
+    $('#addsources').show();
+  }else{
+      $('#addsources').hide();
+
+  };
+
+};
