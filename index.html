@@ -41,6 +41,7 @@
     <span class="hamb-middle"></span>
     <span class="hamb-bottom"></span>
   </button>
+  <div id="updated"></div>
   <div class="content">  
     <div class="container">
       <div class="grid" id="news-container"></div> 
@@ -70,9 +71,13 @@
   <script id="newsTemplate" type="text/x-handlebars-template">
     {{#each articles}}
     <div class="row rowspace {{../source}} sorter" data-fulldate={{publishedAt}} >
+
       <div class="col-md-2">
-        <p>{{getData publishedAt}}</p>
-        <p>{{getTime publishedAt}}</p>
+      <div class="sourcedate">
+        <p>{{getData publishedAt}}<br>
+        {{getTime publishedAt}}</p>
+        </div>   
+           <div class="vertical-line" style="height: 145px;" />
       </div>
      <div class="col-md-4">
       <a href={{url}} target="_news">
@@ -93,23 +98,21 @@
       <p>{{description}}</p>
 
       <!-- Social Media Share Buttons -->
-      <a class="social-link facebook" href="" id="fb-share" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i>Facebook</a>
-      <a class="social-link twitter" href="" id="tweet" rel="nofollow" target="_blank" title="Tweet this Page"><i class="fa fa-twitter"></i>Twitter</a>
-      <a class="social-link linkedin" href="" id="linkedin" rel="nofollow" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin"></i> LinkedIn</a>
+      <a class="social-link facebook" href="" id="fb-share" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+      <a class="social-link twitter" href="" id="tweet" rel="nofollow" target="_blank" title="Tweet this Page"><i class="fa fa-twitter"></i></a>
+      <a class="social-link linkedin" href="" id="linkedin" rel="nofollow" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin"></i></a>
       <a class="social-link gplus" href="" id="gplus-share" title="Plus 1 on Google+"><i class="fa fa-google-plus"></i></a>
       <a class="social-link email" href="" id="email-share" title="Email to a Friend"><i class="fa fa-envelope"></i></a>
     </div>
-  </div>
-
-  {{/each}}
-</script>
-<!--   <div class="row {{../source}}">
-    <div class="col-md-10 col-md-offset-2">
+     <div class="col-md-10 col-md-offset-2">
       <hr>
     </div>
-  </div> -->
-
-
+  </div>
+  {{/each}}
+</script>
+<a href="feedback.html">
+<div id="feedback">Please give me feedback</div>
+</a>
 <script type="text/javascript"  src="js/handlebars.js"></script>
 <script type="text/javascript"  src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

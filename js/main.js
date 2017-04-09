@@ -60,7 +60,7 @@ function createHTML(Data, Template, Container) {
     imagesize();
     colorForSource();
     sorting();
-    
+
   }
 };
 
@@ -126,8 +126,9 @@ window.setInterval(function(){
   var checked =  $('#someSwitchOptionPrimary').is(':checked');
   if(checked){
     updateSources();
+    lastupdated();
   };
-}, 300000);  
+}, 300000);  // 300000
 
 // Update the APIs function
 function updateSources(){
@@ -137,8 +138,21 @@ function updateSources(){
 
     if(checked){
       var url =  $(this).val();
+      var name =  $(this).attr('source');
+      $('.' + name).each(function (){
+          $(this).remove();
+      });
+      console.log(name);
       loadData("newsTemplate",  "news-container" , url );
     };
   });
 };
 
+function lastupdated(){
+  var dt = new Date();
+  var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+  console.log(time);
+  $('#updated').html("last update: " + time);
+
+}
+lastupdated();
