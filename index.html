@@ -69,7 +69,7 @@
   <!-- template articles -->
   <script id="newsTemplate" type="text/x-handlebars-template">
     {{#each articles}}
-    <div class="row rowspace {{../source}} sorter data-date={{getData publishedAt}} data-time={{getTime publishedAt}}">
+    <div class="row rowspace {{../source}} sorter" data-fulldate={{publishedAt}} >
       <div class="col-md-2">
         <p>{{getData publishedAt}}</p>
         <p>{{getTime publishedAt}}</p>
@@ -100,14 +100,14 @@
       <a class="social-link email" href="" id="email-share" title="Email to a Friend"><i class="fa fa-envelope"></i></a>
     </div>
   </div>
+
+  {{/each}}
+</script>
 <!--   <div class="row {{../source}}">
     <div class="col-md-10 col-md-offset-2">
       <hr>
     </div>
   </div> -->
-  {{/each}}
-</script>
-
 
 
 <script type="text/javascript"  src="js/handlebars.js"></script>

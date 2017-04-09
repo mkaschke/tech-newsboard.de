@@ -59,13 +59,9 @@ function createHTML(Data, Template, Container) {
   } else{
     imagesize();
     colorForSource();
-
-    setTimeout(sortDate, 5000)
-
+   
   }
 };
-
-  
 
 // Helper Date
 Handlebars.registerHelper( "getData", function ( publishedAt ){

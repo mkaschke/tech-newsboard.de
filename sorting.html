@@ -11,9 +11,9 @@
   TEST
   
 <div id="#news-container"> 
-<div class="sorter" data-date="2017-04-04" data-time="16:20:07">2017-04-04 16:20:07 </div>
-<div class="sorter" data-date="2017-03-30" data-time="11:50:44">2017-03-30 11:50:44<div class="auto"></div></div>
-<div class="sorter" data-date="2017-04-04" data-time="15:49:07">2017-04-04 15:49:07</div>
+<div class="sorter" data-all="2017-04-04T16:20:07Z" data-date="2017-04-04" data-time="16:20:07">2017-04-04 16:20:07</div>
+<div class="sorter" data-all="2017-03-30T11:50:44Z" data-date="2017-03-30" data-time="11:50:44">2017-03-30 11:50:44<div class="auto"></div></div>
+<div class="sorter"  data-all="2017-04-04T15:49:07Z" data-date="2017-04-04" data-time="15:49:07">2017-04-04 15:49:07</div>
 
 </div>
 
@@ -25,10 +25,10 @@
 <script type="text/javascript" src="js/masonry.pkgd.min.js"></script>  
 <script type="text/javascript"  src="js/imagesloaded.pkgd.min.js"></script> 
 <!-- <script type="text/javascript"  src="js/main.js"></script> -->
-<script type="text/javascript" src="js/menu.js"></script>  
+<!-- <script type="text/javascript" src="js/menu.js"></script>   -->
 <script type="text/javascript" src="social.js"> </script>
 <script type="text/javascript" src="date.js"> </script>
-
+<!-- <script type="text/javascript" src="js/sorting.js"></script>   -->
 
 <script>
 $(document).ready(function () {
@@ -83,43 +83,49 @@ $(document).ready(function () {
   // $('.sorter').sortElements(function(a, b){
   //   return Date.parse($(a).data('date')) > Date.parse($(b).data('date')) ? 1 : -1;});
 
-  function sortDate(){
-    console.log("läuft");
-    $('.sorter').sortElements(function(a, b){
-          console.log("datum");
+  // function sortDate(){
+  //   console.log("erster Sortierer");
+  //   $('.sorter').sortElements(function(a, b){
+  //         console.log("datum");
 
-       var aValue = Date.parse($(a).data('date'));
-       var bValue = Date.parse($(b).data('date'));
-     
-      return aValue > bValue ? -1 : 1;});
+  //      var aValue = Date.parse($(a).data('date'));
+  //      var bValue = Date.parse($(b).data('date'));
+
+  //     return aValue > bValue ? -1 : 1;});
 
    
-      $('.sorter').sortElements(function(c, d){
+  //     $('.sorter').sortElements(function(c, d){
+  //   console.log("zweiter Sortierer");
+  //           if (Date.parse($(c).data('date')) === Date.parse($(d).data('date'))){
+  //                      console.log("time");
+  //              return Date.parse($(c).data('time')) > Date.parse($(d).data('time')) ? -1 : 1;
+  //               }
 
-            if (Date.parse($(c).data('date')) === Date.parse($(d).data('date'))){
-                       console.log("time");
-               return Date.parse($(c).data('time')) > Date.parse($(d).data('time')) ? -1 : 1;
-                }
-
-      });
-    }; 
- 
-
-
-  sortDate();
+  //     });
+  //   }; 
 
 
-
+//    function sortTime(){
+//     console.log("zweiter Sortierer");
+//     $('.sorter').sortElements(function(a, b){
+//           console.log("Time");
+          
+//        var aValue = Date.parse($(a).data('all'));
+//        var bValue = Date.parse($(b).data('all'));
+//      console.log(aValue + " " + bValue);
+//       return aValue > bValue ? -1 : 1;});
+//     }; 
+  
+// sortTime();
 
 }); // close ready
 
 
 
-
-
-
+  
 
 </script>
+
 
 </body> 
 </html>

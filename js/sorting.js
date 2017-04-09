@@ -45,35 +45,14 @@
  
 })();
 
-  // $('.sorter').sortElements(function(a, b){
-  //   return Date.parse($(a).data('date')) > Date.parse($(b).data('date')) ? 1 : -1;});
-
-
-  // TODO time sorting 
- function sortDate(){
-    console.log("läuft");
+  // Sorting for all posts 
+  function sorting(){
+    console.log("erster Sortierer");
     $('.sorter').sortElements(function(a, b){
-          console.log("datum");
-      return Date.parse($(a).data('date')) > Date.parse($(b).data('date')) ? 1 : -1;});
 
-   
-      $('.sorter').sortElements(function(c, d){
+       var aValue = Date.parse($(a).data('fulldate'));
+       var bValue = Date.parse($(b).data('fulldate'));
+     console.log(aValue + " " + bValue);
+      return aValue > bValue ? -1 : 1;});
 
-            if (Date.parse($(c).data('date')) === Date.parse($(d).data('date'))){
-                       console.log("time");
-               return Date.parse($(c).data('time')) > Date.parse($(d).data('time')) ? -1 : 1;
-                }
-
-      });
     }; 
- 
-
-
-  // sortDate();
-
-
-
-
-
-
-

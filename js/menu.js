@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+setTimeout("sorting()", 9000);
+
 // menu
 var trigger = $('.hamburger'),
 overlay = $('.overlay'),
@@ -29,6 +31,5 @@ $('[data-toggle="offcanvas"]').click(function () {
 });  
 
 }); // close ready
-
 
 
