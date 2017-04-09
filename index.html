@@ -23,11 +23,13 @@
          <form role="form">
           <ul class="list-group">       
             <li class="list-group-item">
-              Auto reload  
+              Auto reload
               <div class="material-switch pull-right">
                 <input id="someSwitchOptionPrimary" type="checkbox" class="box" />
                 <label for="someSwitchOptionPrimary" class="label-primary"></label>
               </div>
+              <p class="whitetext">get an update each 5 minutes</p>
+
             </li>
           </ul>
         </form>
@@ -51,6 +53,7 @@
   <!-- template menu -->
   <script id="menuTemplate" type="text/x-handlebars-template">
     <h3 class="menu-title">Sources</h3>
+    <p class="whitetext">Get always the latest tech news on top of the page</p>
     <hr>
     <form role="form">
       <ul class="list-group">
@@ -77,7 +80,7 @@
         <p>{{getData publishedAt}}<br>
         {{getTime publishedAt}}</p>
         </div>   
-           <div class="vertical-line" style="height: 145px;" />
+           <!-- <div class="vertical-line" style="height: 145px;" /> -->
       </div>
      <div class="col-md-4">
       <a href={{url}} target="_news">

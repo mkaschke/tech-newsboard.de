@@ -431,13 +431,13 @@ a:hover.email {
 }
 
 
-.vertical-line{
+/*.vertical-line{
 	width: 2px;
 	background-color: #eee; 
 	height: 100%; 
 	float: left; 
 	margin-left:80px;
-}
+}*/
 
 .sourcedate{
 		margin-left: 15px;
@@ -466,6 +466,12 @@ body:after{
   -ms-transform:rotate(45deg);
   -webkit-transform:rotate(45deg);
   transform:rotate(45deg);
+}
+
+.whitetext{
+	color: white;
+	text-align: center;
+	padding: 5px;
 }
 
 #feedback{
