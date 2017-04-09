@@ -1,8 +1,8 @@
 
-// load check boxes
+// load menu check boxes sources
 loadData("menuTemplate","menu-container", "json/sources.json" );
 
-// checkboxes
+// click checkboxes
 $(document).on('click','[id^=someSwitchOptionPrimary-]',function(){
 
 // get values from checkbox
@@ -59,7 +59,8 @@ function createHTML(Data, Template, Container) {
   } else{
     imagesize();
     colorForSource();
-   
+    sorting();
+    
   }
 };
 
@@ -83,11 +84,11 @@ function checkOrNot(){
 
     if (cookInformtion == 'true'){
       $( "#someSwitchOptionPrimary-"+ name).click();
-        } else{
-         $( "#someSwitchOptionPrimary-"+ name).prop('checked', false);
-        }
+    } else{
+     $( "#someSwitchOptionPrimary-"+ name).prop('checked', false);
+   }
 
-      });
+ });
 };
 
   // image replace
