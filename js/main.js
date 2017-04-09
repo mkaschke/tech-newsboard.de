@@ -62,6 +62,7 @@ function createHTML(Data, Template, Container) {
     colorForSource();
     sorting();
     nosourceschoosen();
+    socialforposts();
   }
 };
 
@@ -165,7 +166,5 @@ if ($.trim($("#news-container").html())=='') {
     $('#addsources').show();
   }else{
       $('#addsources').hide();
-
   };
-
 };
