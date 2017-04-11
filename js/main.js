@@ -62,7 +62,6 @@ function createHTML(Data, Template, Container) {
     colorForSource();
     sorting();
     nosourceschoosen();
-    socialforposts();
   }
 };
 
@@ -153,7 +152,7 @@ function updateSources(){
 function lastupdated(){
   var dt = new Date();
   var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-  console.log(time);
+  // console.log(time);
   $('#updated').html("last update: " + time);
 
 }
