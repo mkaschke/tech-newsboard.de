@@ -30,16 +30,15 @@ $('[data-toggle="offcanvas"]').click(function () {
   $('#wrapper').toggleClass('toggled');
 });  
   
-
-// IF news-container
-function nosourceschoosen(){
-if($('#news-container').html().length > 1){
-    $('#addsources').hide();
-} else{
-    $('#addsources').show();
-}
-};
-
 }); // close ready
 
-
+var lastScrollTop = 100;
+$(window).scroll(function(event){
+   var st = $(this).scrollTop();
+   if (st > lastScrollTop){
+       $('#beta').fadeOut(2000);
+   } else {
+       $('#beta').fadeIn(2000);
+   }
+   lastScrollTop = st;
+});

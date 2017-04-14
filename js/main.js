@@ -67,14 +67,39 @@ function createHTML(Data, Template, Container) {
 
 // Helper Date
 Handlebars.registerHelper( "getData", function ( publishedAt ){
-  var date = publishedAt.split('T')[0];
-  return date;
+  var date; 
+  if(publishedAt == null){
+     publishedAt =  moment().add(-1, 'days');
+  };
+  // console.log("datum: " + publishedAt);
+  var now = moment(publishedAt).add(-2, 'hours').fromNow();
+  // date = publishedAt.split('T')[0];
+
+  return now;
 });
 
 // Helper Time
 Handlebars.registerHelper( "getTime", function ( publishedAt ){
-  var time = publishedAt.split('T')[1].split("Z")[0];
+  var time;
+
+  if(publishedAt == null){
+    publishedAt =  moment().add(-1, 'days').toISOString();
+  };
+
+  time = publishedAt.split('T')[1].split("Z")[0];
+
   return time;
+});
+
+// // Helper if null
+Handlebars.registerHelper("nullhelper", function(publishedAt) {
+    var date;
+    if(publishedAt == null) {
+       date = moment().add(-1, 'days').toISOString();
+    }else{
+      date = publishedAt;
+    }
+    return date;
 });
 
 // check cookie with menu check / unchecked 
@@ -151,7 +176,10 @@ function updateSources(){
 
 function lastupdated(){
   var dt = new Date();
-  var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+  var time = dt.getHours() + ":" + dt.getMinutes();
+  // var time =  moment(dt).fromNow();
+
+ 
   // console.log(time);
   $('#updated').html("last update: " + time);
 

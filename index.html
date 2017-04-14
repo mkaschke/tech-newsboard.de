@@ -6,10 +6,10 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+<div id="beta">beta</div>
   <div id="wrapper">
     <div class="overlay"></div>
 
@@ -74,12 +74,12 @@
   <!-- template articles -->
   <script id="newsTemplate" type="text/x-handlebars-template">
     {{#each articles}}
-    <div class="row rowspace {{../source}} sorter" data-fulldate={{publishedAt}} >
+    <div class="row rowspace {{../source}} sorter" data-fulldate={{nullhelper publishedAt}} >
 
       <div class="col-md-2">
       <div class="sourcedate">
-        <p>{{getData publishedAt}}<br>
-        {{getTime publishedAt}}</p>
+        <p>{{getData publishedAt}}
+        <!-- <br>{{getTime publishedAt}}</p> -->
         </div>   
            <!-- <div class="vertical-line" style="height: 145px;" /> -->
       </div>
@@ -118,11 +118,12 @@
 <div id="feedback">Please give me feedback</div>
 </a>
 <script type="text/javascript"  src="js/handlebars.js"></script>
-<script type="text/javascript"  src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script type="text/javascript"  src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript"  src="js/jquery.cookie.js"></script>  
 <script type="text/javascript"  src="js/imagesloaded.pkgd.min.js"></script> 
-<!-- <script type="text/javascript" src="js/social.js"> </script> -->
+<script type="text/javascript" src="js/date.js"> </script>
+<script type="text/javascript"  src="js/moment-timezone.js"></script>
 <script type="text/javascript" src="js/sorting.js"></script>  
 <script type="text/javascript"  src="js/main.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>  
