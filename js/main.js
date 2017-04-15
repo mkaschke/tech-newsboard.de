@@ -126,7 +126,7 @@ function checkOrNot(){
       var src = $(this).attr("src");
 
       if (src === ""){
-        $(this).attr("src", "/images/replace.jpg");
+        $(this).attr("src", "images/replace.jpg");
       }
       // console.log(src);
     });
