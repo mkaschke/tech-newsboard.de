@@ -1,6 +1,16 @@
+var firststarttrigger = true;
+
 $(document).ready(function () {
 
-nosourceschoosen();
+function firststart(){
+  if (firststarttrigger){
+      nosourceschoosen();
+      firststarttrigger = false;
+  }
+
+}
+
+
 
 // menu
 var trigger = $('.hamburger'),
