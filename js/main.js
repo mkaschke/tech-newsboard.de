@@ -190,8 +190,7 @@ lastupdated();
 function nosourceschoosen(){
 if ($.trim($("#news-container").html())=='') {
      $( "#someSwitchOptionPrimary-techcrunch").click();
-     $('#addsources').show();
   }else{
-      $('#addsources').hide();
+      // $('#addsources').hide();
   };
 };
